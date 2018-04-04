@@ -26,7 +26,7 @@
   get_url: url="https://archive.apache.org/dist/lucene/solr/{{ dataverse.solr.version }}/solr-{{ dataverse.solr.version }}.tgz" dest=/tmp
 
 - name: untar solr
-  shell: "tar xvzC /tmp -f /tmp/solr-4.6.0.tgz"
+  shell: "tar xvzC /tmp -f /tmp/solr-{{ dataverse.solr.version }}.tgz"
 
 - name: remove solr root directory
   file: path="{{ dataverse.solr.root }}" state=absent
@@ -50,14 +50,14 @@
   file: path="/tmp/solr-{{ dataverse.solr.version }}" state=absent
 
 - name: get last major solr schema
-  get_url: url="https://github.com/IQSS/dataverse/releases/download/v4.6/schema.xml"
+  get_url: url="https://raw.githubusercontent.com/IQSS/dataverse/develop/conf/solr/7.2.1/schema.xml"
         dest={{ dataverse.solr.root }}/example/solr/collection1/conf/
-        owner={{ dataverse.glassfish.user }} group={{ dataverse.glassfish.group }} mode=0644
+        owner=root group=root mode=0644
 
-#- name: get most recent solr schema
-#  get_url: url="https://github.com/IQSS/dataverse/releases/download/v{{ dataverse.version }}/schema.xml"
-#        dest={{ dataverse.solr.root }}/example/solr/collection1/conf/
-#        owner={{ dataverse.glassfish.user }} group={{ dataverse.glassfish.group }} mode=0644
+- name: get updated solr config
+  get_url: url="https://raw.githubusercontent.com/IQSS/dataverse/develop/conf/solr/7.2.1/solrconfig.xml"
+        dest={{ dataverse.solr.root }}/example/solr/collection1/conf/
+        owner=root group=root mode=0644
 
 - name: bump requestHeaderSize in jetty.xml
   lineinfile: dest={{ dataverse.solr.root }}/example/etc/jetty.xml insertafter="org.eclipse.jetty.server.bio.SocketConnector"

@@ -42,7 +42,7 @@ dataverse:
     group: solr
     root: /usr/local/solr
     user: solr
-    version: 4.6.0
+    version: 7.2.1
   thumbnails: true
   version: 4.8.6
 rserve:
