@@ -50,12 +50,12 @@
   file: path="/tmp/solr-{{ dataverse.solr.version }}" state=absent
 
 - name: get last major solr schema
-  get_url: url="https://raw.githubusercontent.com/IQSS/dataverse/develop/conf/solr/7.2.1/schema.xml"
+  get_url: url="https://raw.githubusercontent.com/IQSS/dataverse/develop/conf/solr/{{ dataverse.solr.version }}/schema.xml"
         dest={{ dataverse.solr.root }}/example/solr/collection1/conf/
         owner=root group=root mode=0644
 
 - name: get updated solr config
-  get_url: url="https://raw.githubusercontent.com/IQSS/dataverse/develop/conf/solr/7.2.1/solrconfig.xml"
+  get_url: url="https://raw.githubusercontent.com/IQSS/dataverse/develop/conf/solr/{{ dataverse.solr.version }}/solrconfig.xml"
         dest={{ dataverse.solr.root }}/example/solr/collection1/conf/
         owner=root group=root mode=0644
 
