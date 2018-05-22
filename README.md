@@ -9,6 +9,15 @@ The preparation lies in the group_var options (usernames/passwords, whether to i
 
 ### Usage:
 	$ ansible-playbook -i <inventory file> [-u <user>] [-b] [-K] -e @<group_vars_file> [-v] dataverse.pb
+	
+Notes:  
+- dataverse.pb isn't in the current master directory and the script doesn't run without it.  I've copied over from an earlier build.
+- The ansible script seems to expect a directory structure:
+    roles/dataverse/defaults    /files    /tasks   /templates
+    also not in current main.  So I moved appropriate files into a roles/dataverse directory
+    
+    This gets me past not finding the war file but now failing on: Remote server does not listen for requests on [localhost:4848]
+    
 
 The role currently supports CentOS 7 with all services running on the same machine, but intends to become OS-agnostic and support multiple nodes for scalability.
 

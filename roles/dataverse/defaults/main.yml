@@ -1,0 +1,52 @@
+---
+# dataverse/defaults/main.yml
+
+dataverse:
+  adminpass: notPr0d
+  allow_signups: true
+  api:
+    blocked_endpoints: "admin,test"
+    blocked_policy: "localhost-only"
+    location: "http://localhost:8080/api"
+  copyright: "&copy; Your Institution"
+  db: dvndb
+  dbhost: localhost
+  dbuser: dvnuser
+  dbpass: dvnsecret
+  dbport: 5432
+  demo: false
+  doi:
+    prefix: "10.5072/FK2"
+    protocol:
+    separator: "/"
+    service: EZID
+  filesdir: /usr/local/dvn/data
+  glassfish:
+    user: glassfish
+    group: glassfish
+    root: /usr/local/glassfish4
+    domain: domain1
+    logformat: ulf
+    adminuser: admin
+    adminpass: notPr0d
+    timeout: 180
+  google_analytics_key:
+  memheap: 2048
+  service_email: noreply@dataverse.yourinstitution.edu
+  service_name: dataverse.yourinstitution.edu
+  shibboleth:
+    enabled: false
+    repo: "http://download.opensuse.org/repositories/security:/shibboleth/CentOS_7/security:shibboleth.repo"
+  smtp: smtp.yourinstitution.edu
+  solr:
+    group: solr
+    root: /usr/local/solr
+    user: solr
+    version: 4.6.0
+  thumbnails: true
+  version: 4.8.6
+rserve:
+  host: rserve.yourinstitution.edu
+  user: rserve
+  pass: rserve
+  port: 6311
